@@ -1,0 +1,9 @@
+{
+    "version": "0.1.0",
+    "command": "explorer",    
+    "windows": {
+        "command": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+       //  "command": "explorer.exe"
+    },
+    
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body {
+    }
+
+    #imgGrid {
+        width: 800px;
+        overflow: auto;
+        margin: 10 auto;
+    }
+
+    #imgGrid img {
+        display: block;
+        width: 75px;
+        height: 75px;
+        float: left;
+        cursor: pointer;
+        margin: 5;
+    }
+	
+	.toolbar {
+	}
+
+    canvas { display: block; margin: 10px auto; box-shadow: 5px 5px 5px 5px}
+    </style>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class=toolbar >
+
+  </div>
+    <script src="canvas.js"></script>
+
+    <script>
+    canvas.displayImage($("body"));
+    
+    var grid = document.createElement("div");
+    grid.id = "imgGrid";
+    $("body").append(grid);
+
+    for( var i = 1; i < 7; i++) {
+        var img = document.createElement("img");
+        img.src  = "images/new"+ i + ".jpg";
+        img.height = "100%";
+        img.width = "100%";
+        img.onclick = function() {
+            canvas.loadImg(this)
+            console.log(canvas.getPixelData());
+        }
+        $(grid).append(img);
+    }
+	</script>
+	<script>
+	var Filters = {};
+	Filters.getPixels = function() {
+  return canvas.ctx.getImageData(0,0,canvas.width,canvas.height);
+};
+    </script>
+    <script src="filters.js"></script>
+	
+
+</body>
+</html>
+
+
+
